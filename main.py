@@ -191,6 +191,26 @@ class QuestionGeneratorAgent(Agent):
             "Comparison": f"{p.name} focuses on {', '.join(p.benefits)}."
         }
         return answers[category]
+class ContentStrategyAgent(Agent):
+    """
+    Decides page-level strategies such as selection rules
+    """
+
+    def execute(self, page_type: PageType) -> Dict[str, Any]:
+        strategies = {
+            PageType.FAQ: {
+                "max_questions": 5,
+                "selection_rule": "one_per_category"
+            },
+            PageType.PRODUCT: {
+                "sections": ["benefits", "ingredients", "usage", "price", "safety"]
+            },
+            PageType.COMPARISON: {
+                "comparison_axes": ["ingredients", "benefits", "price"]
+            }
+        }
+        return strategies[page_type]
+
 
 
 class ComparisonAgent(Agent):
@@ -264,24 +284,37 @@ class WorkflowOrchestrator:
     def __init__(self):
         self.parser = DataParserAgent()
         self.qgen = QuestionGeneratorAgent()
+        self.strategy = ContentStrategyAgent()   # ✅ NEW
         self.compare = ComparisonAgent()
         self.renderer = TemplateRendererAgent()
 
     def run(self, raw_product: Dict) -> Dict[str, Any]:
+        # Step 1: Parse product
         product = self.parser.execute(raw_product)
-        questions = self.qgen.execute(product)
-        comparison = self.compare.execute(product)
 
+        # Step 2: Generate questions
+        questions = self.qgen.execute(product)
+
+        # Step 3: Ask strategy agent how to build FAQ  ✅ NEW
+        faq_strategy = self.strategy.execute(PageType.FAQ)
+
+        # Step 4: Render FAQ using strategy
         faq = self.renderer.execute({
             "page_type": PageType.FAQ,
-            "questions": questions
+            "questions": questions,
+            "strategy": faq_strategy
         })
 
+        # Step 5: Render product page
         product_page = self.renderer.execute({
             "page_type": PageType.PRODUCT,
             "product": product
         })
 
+        # Step 6: Generate comparison data
+        comparison = self.compare.execute(product)
+
+        # Step 7: Render comparison page
         comparison_page = self.renderer.execute({
             "page_type": PageType.COMPARISON,
             "comparison": comparison
@@ -292,6 +325,7 @@ class WorkflowOrchestrator:
             "product_page": product_page,
             "comparison_page": comparison_page
         }
+
 
 
 # ============================================================================
