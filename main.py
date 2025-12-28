@@ -284,37 +284,37 @@ class WorkflowOrchestrator:
     def __init__(self):
         self.parser = DataParserAgent()
         self.qgen = QuestionGeneratorAgent()
-        self.strategy = ContentStrategyAgent()   # ✅ NEW
+        self.strategy = ContentStrategyAgent()  
         self.compare = ComparisonAgent()
         self.renderer = TemplateRendererAgent()
 
     def run(self, raw_product: Dict) -> Dict[str, Any]:
-        # Step 1: Parse product
+      
         product = self.parser.execute(raw_product)
 
-        # Step 2: Generate questions
+     
         questions = self.qgen.execute(product)
 
-        # Step 3: Ask strategy agent how to build FAQ  ✅ NEW
+        
         faq_strategy = self.strategy.execute(PageType.FAQ)
 
-        # Step 4: Render FAQ using strategy
+      
         faq = self.renderer.execute({
             "page_type": PageType.FAQ,
             "questions": questions,
             "strategy": faq_strategy
         })
 
-        # Step 5: Render product page
+    
         product_page = self.renderer.execute({
             "page_type": PageType.PRODUCT,
             "product": product
         })
 
-        # Step 6: Generate comparison data
+      
         comparison = self.compare.execute(product)
 
-        # Step 7: Render comparison page
+    
         comparison_page = self.renderer.execute({
             "page_type": PageType.COMPARISON,
             "comparison": comparison
