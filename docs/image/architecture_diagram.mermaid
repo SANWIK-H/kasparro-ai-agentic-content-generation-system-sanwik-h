@@ -1,0 +1,53 @@
+graph TD
+    Start[Raw Product JSON] --> Orch[Workflow Orchestrator<br/>State Machine / DAG]
+    
+    Orch --> Parser[DataParserAgent<br/>Parse JSON → ProductModel]
+    Parser --> State1[(State: product)]
+    
+    State1 --> QuestionGen[QuestionGeneratorAgent<br/>Generate 20 Questions]
+    QuestionGen --> State2[(State: questions)]
+    
+    State1 --> Strategy1[ContentStrategyAgent<br/>Plan FAQ Strategy]
+    State2 --> Render1[TemplateRendererAgent<br/>Render FAQ Page]
+    Strategy1 --> Render1
+    Render1 --> Logic1[Logic Blocks:<br/>extract_benefits<br/>generate_usage<br/>create_safety]
+    Logic1 --> Output1[faq.json]
+    
+    State1 --> Strategy2[ContentStrategyAgent<br/>Plan Product Strategy]
+    Strategy2 --> Render2[TemplateRendererAgent<br/>Render Product Page]
+    Render2 --> Logic2[Logic Blocks:<br/>extract_benefits<br/>format_ingredients<br/>generate_usage<br/>skin_type_matcher<br/>format_price]
+    Logic2 --> Output2[product_page.json]
+    
+    State1 --> Comp[ComparisonAgent<br/>Generate Competitor]
+    Comp --> State3[(State: comparison)]
+    
+    State3 --> Strategy3[ContentStrategyAgent<br/>Plan Comparison Strategy]
+    Strategy3 --> Render3[TemplateRendererAgent<br/>Render Comparison Page]
+    Render3 --> Logic3[Logic Blocks:<br/>compare_ingredients<br/>compare_benefits<br/>compare_price]
+    Logic3 --> Output3[comparison_page.json]
+    
+    Output1 --> End[3 JSON Pages]
+    Output2 --> End
+    Output3 --> End
+    
+    style Start fill:#4a90e2,stroke:#2e5c8a,stroke-width:2px,color:#fff
+    style Orch fill:#f39c12,stroke:#d68910,stroke-width:3px,color:#fff
+    style Parser fill:#27ae60,stroke:#1e8449,stroke-width:2px,color:#fff
+    style QuestionGen fill:#27ae60,stroke:#1e8449,stroke-width:2px,color:#fff
+    style Strategy1 fill:#9b59b6,stroke:#7d3c98,stroke-width:2px,color:#fff
+    style Strategy2 fill:#9b59b6,stroke:#7d3c98,stroke-width:2px,color:#fff
+    style Strategy3 fill:#9b59b6,stroke:#7d3c98,stroke-width:2px,color:#fff
+    style Comp fill:#27ae60,stroke:#1e8449,stroke-width:2px,color:#fff
+    style Render1 fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style Render2 fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style Render3 fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff
+    style Output1 fill:#16a085,stroke:#138d75,stroke-width:2px,color:#fff
+    style Output2 fill:#16a085,stroke:#138d75,stroke-width:2px,color:#fff
+    style Output3 fill:#16a085,stroke:#138d75,stroke-width:2px,color:#fff
+    style End fill:#2c3e50,stroke:#1c2833,stroke-width:2px,color:#fff
+    style State1 fill:#ecf0f1,stroke:#95a5a6,stroke-width:2px
+    style State2 fill:#ecf0f1,stroke:#95a5a6,stroke-width:2px
+    style State3 fill:#ecf0f1,stroke:#95a5a6,stroke-width:2px
+    style Logic1 fill:#f8f9fa,stroke:#adb5bd,stroke-width:1px,stroke-dasharray: 5 5
+    style Logic2 fill:#f8f9fa,stroke:#adb5bd,stroke-width:1px,stroke-dasharray: 5 5
+    style Logic3 fill:#f8f9fa,stroke:#adb5bd,stroke-width:1px,stroke-dasharray: 5 5
