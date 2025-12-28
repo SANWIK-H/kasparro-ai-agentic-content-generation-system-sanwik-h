@@ -1,72 +1,58 @@
 {
   "page_type": "comparison",
-  "products": {
-    "product_a": {
-      "name": "GlowBoost Vitamin C Serum",
-      "concentration": "10% Vitamin C",
-      "price": 699,
-      "ingredients": [
-        "Vitamin C",
-        "Hyaluronic Acid"
-      ],
-      "benefits": [
-        "Brightening",
-        "Fades dark spots"
-      ]
-    },
-    "product_b": {
-      "name": "RadiantGlow Vitamin C Complex",
-      "concentration": "15% Vitamin C",
-      "price": 899,
-      "ingredients": [
-        "Vitamin C",
-        "Vitamin E",
-        "Ferulic Acid"
-      ],
-      "benefits": [
-        "Anti-aging",
-        "Brightening",
-        "Antioxidant protection"
-      ]
-    }
+  "product_a": {
+    "name": "GlowBoost Vitamin C Serum",
+    "concentration": "10% Vitamin C",
+    "skin_types": [
+      "Oily",
+      "Combination"
+    ],
+    "ingredients": [
+      "Vitamin C",
+      "Hyaluronic Acid"
+    ],
+    "benefits": [
+      "Brightening",
+      "Fades dark spots"
+    ],
+    "usage": "Apply 2–3 drops in the morning before sunscreen",
+    "side_effects": "Mild tingling for sensitive skin",
+    "price": 699
   },
-  "comparison_matrix": {
+  "product_b": {
+    "name": "RadiantGlow Vitamin C Complex",
+    "concentration": "15% Vitamin C",
+    "skin_types": [
+      "All Skin Types"
+    ],
+    "ingredients": [
+      "Vitamin C",
+      "Vitamin E",
+      "Ferulic Acid"
+    ],
+    "benefits": [
+      "Brightening",
+      "Antioxidant protection"
+    ],
+    "usage": "Apply 3–4 drops in the evening after cleansing",
+    "side_effects": "May cause mild redness initially",
+    "price": 899
+  },
+  "comparison": {
     "ingredients": {
-      "comparison_type": "ingredients",
-      "common_ingredients": [
+      "common": [
         "Vitamin C"
       ],
-      "unique_to_product_a": [
+      "unique_a": [
         "Hyaluronic Acid"
       ],
-      "unique_to_product_b": [
+      "unique_b": [
         "Ferulic Acid",
         "Vitamin E"
       ]
     },
-    "benefits": {
-      "comparison_type": "benefits",
-      "product_a_benefits": [
-        "Brightening",
-        "Fades dark spots"
-      ],
-      "product_b_benefits": [
-        "Anti-aging",
-        "Brightening",
-        "Antioxidant protection"
-      ],
-      "overlap": 1
-    },
-    "price": {
-      "comparison_type": "price",
-      "product_a_price": 699,
-      "product_b_price": 899,
-      "difference": 200,
-      "cheaper_product": "GlowBoost Vitamin C Serum"
-    }
-  },
-  "recommendation": {
-    "summary": "GlowBoost Vitamin C Serum offers great value with 10% Vitamin C while RadiantGlow Vitamin C Complex provides higher concentration at 15% Vitamin C",
-    "best_for_budget": "GlowBoost Vitamin C Serum"
+    "benefits_overlap": 1,
+    "price_difference": 200,
+    "cheaper_product": "GlowBoost Vitamin C Serum"
   }
 }
