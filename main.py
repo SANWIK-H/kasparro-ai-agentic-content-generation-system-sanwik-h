@@ -299,8 +299,8 @@ class WorkflowOrchestrator:
         faq_strategy = self.strategy.execute(PageType.FAQ)
 
       
-        faq = self.renderer.execute({
-            "page_type": PageType.FAQ,
+    faq = self.renderer.execute({
+        "page_type": PageType.FAQ,
             "questions": questions,
             "strategy": faq_strategy
         })
