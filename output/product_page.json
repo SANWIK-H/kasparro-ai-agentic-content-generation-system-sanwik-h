@@ -1,0 +1,67 @@
+{
+  "page_type": "product",
+  "hero": {
+    "product_name": "GlowBoost Vitamin C Serum",
+    "tagline": "Professional 10% Vitamin C serum for visible results"
+  },
+  "details": {
+    "benefits": {
+      "section_type": "benefits",
+      "title": "Key Benefits",
+      "items": [
+        {
+          "benefit": "Brightening",
+          "emphasis": "high"
+        },
+        {
+          "benefit": "Fades dark spots",
+          "emphasis": "high"
+        }
+      ]
+    },
+    "ingredients": {
+      "section_type": "ingredients",
+      "title": "Active Ingredients",
+      "primary": "Vitamin C",
+      "all_ingredients": [
+        "Vitamin C",
+        "Hyaluronic Acid"
+      ],
+      "concentration": "10% Vitamin C"
+    },
+    "usage": {
+      "section_type": "usage",
+      "title": "How to Use",
+      "instructions": "Apply 2–3 drops in the morning before sunscreen",
+      "frequency": "Daily",
+      "timing": "Morning",
+      "application_method": "Topical"
+    },
+    "skin_types": {
+      "section_type": "skin_types",
+      "title": "Suitable For",
+      "types": [
+        "Oily",
+        "Combination"
+      ],
+      "recommendation": "Ideal for Oily and Combination skin"
+    }
+  },
+  "pricing": {
+    "section_type": "price",
+    "amount": 699,
+    "currency": "INR",
+    "formatted": "₹699"
+  },
+  "safety": {
+    "section_type": "safety",
+    "title": "Safety Information",
+    "side_effects": "Mild tingling for sensitive skin",
+    "severity": "mild",
+    "recommendation": "Patch test recommended for sensitive skin"
+  },
+  "metadata": {
+    "product_category": "Skincare",
+    "product_type": "Serum"
+  }
+}
